@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>task 3</title>
+    <style>
+        input {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <form style="display: flex; flex-direction: column; width: 250px; margin-bottom: 50px;">
+            <label for="login">Enter your login:</label>
+            <input required type="text" name="login" minlength="3">
+            <label for="email">Enter you email:</label>
+            <input required type="email" name="email">
+            <label for="password">Enter your password:</label>
+            <input required type="password" name="password" minlength="6">
+            <label for="password">Confirm your password:</label>
+            <input required type="password" name="confirmPassword" minlength="6">
+            <input type="submit">
+        </form>
+        <table id="table">
+            <tr>
+                <th>login</th>
+                <th>email</th>
+                <th>password</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const form = document.getElementsByTagName('form')[0];
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            const formData = new FormData(form);
+            const login = formData.get('login');
+            const email = formData.get('email');
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            if (checkFormData({ login, confirmPassword, email, password })) {
+                addUser({ login, email, password });
+                form.reset();
+            } else {
+                alert('You have some misstakes in your form!');
+            }
+        });
+
+        function checkFormData({ login, email, password, confirmPassword }) {
+            if (!login &&  login.length < 3) return false;
+            if (!email) return false;
+            if (!password && password.length < 6) return false;
+            if (!confirmPassword && confirmPassword !== password) return false;
+            return true;
+        }
+
+        function addUser({ login, email, password }) {
+            if (login.length > 3 && !email || !password) {
+                alert('You have error with adding user to table!');
+                return;
+            }
+            let tableRow = document.createElement('tr');
+            let tableLogin = document.createElement('td');
+            let tableEmail = document.createElement('td');
+            let tablePassword = document.createElement('td');
+            tableLogin.textContent = login;
+            tableEmail.textContent = email;
+            tablePassword.textContent = password;
+            tableRow.appendChild(tableLogin);
+            tableRow.appendChild(tableEmail);
+            tableRow.appendChild(tablePassword);
+            table.appendChild(tableRow);
+        }
+    </script>
+</body>
+
+</html>

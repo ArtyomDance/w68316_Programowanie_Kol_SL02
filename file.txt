@@ -1,0 +1,9 @@
+
+Polecenie "git push" służy do przesyłania lokalnych zmian z repozytorium Git na zdalny serwer.
+Po wykonaniu zmian w lokalnym repozytorium, możemy użyć tego polecenia, aby przesłać te zmiany na repozytorium zdalne, które może znajdować się na serwerze Git,
+takim jak GitHub, GitLab lub Bitbucket.
+
+Polecenie git status wyświetla stan katalogu roboczego i przechowalni.
+Pozwala zobaczyć, które zmiany zostały zapisane w przechowalni, a które nie, a także które pliki nie są śledzone przez system Git.
+Dane wyjściowe stanu nie zawierają informacji na temat historii commitów. Do tego należy użyć polecenia git log .
+
